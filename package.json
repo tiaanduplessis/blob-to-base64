@@ -1,0 +1,40 @@
+{
+  "name": "blob-to-base64",
+  "version": "1.0.0",
+  "description": "Convert Blob to base64",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/tiaanduplessis/blob-to-base64",
+    "type": "git"
+  },
+  "homepage": "https://github.com/tiaanduplessis/blob-to-base64",
+  "bugs": "https://github.com/tiaanduplessis/blob-to-base64",
+  "main": "dist/blob-to-base64.js",
+  "browser": "dist/blob-to-base64.js",
+  "jsnext:main": "dist/blob-to-base64.es.js",
+  "files": ["dist"],
+  "scripts": {
+    "test": "jest",
+    "lint": "prettier-standard 'src/**/*.js'",
+    "lint:fix": "npm run lint -- --fix",
+    "build": "bili --format es --format umd --compress",
+    "start": "npm run test",
+    "precommit": "npm test",
+    "prepublish": "npm run build",
+    "pretest": "npm run lint:fix"
+  },
+  "author": "tiaanduplessis <tiaanduplessis@hotmail.com>",
+  "babel": {
+    "presets": [["env"]]
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.0",
+    "bili": "^0.17.3",
+    "husky": "^0.14.3",
+    "jest": "^20.0.4",
+    "prettier-standard": "^6.0.0"
+  },
+  "dependencies": {
+    "is-blob": "^1.0.0"
+  }
+}

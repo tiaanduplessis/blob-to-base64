@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <title>Example Usage</title>
+</head>
+
+<body>
+  <input class="input" type="file" />
+  <button class="button">To Base64</button>
+  <p class="result"></p>
+  <script src="dist/blob-to-base64.js"></script>
+  <script>
+    const button = document.querySelector('.button')
+    button.addEventListener('click', function (event) {
+      const blob = document.querySelector('.input').files[0]
+      blobToBase64(blob, function (error, base64) {
+        if (!error) {
+          document.querySelector('.result').innerHTML = base64
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>
