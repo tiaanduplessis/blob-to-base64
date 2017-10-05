@@ -55,6 +55,8 @@
 
 ## Install
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/tiaanduplessis/blob-to-base64.svg)](https://greenkeeper.io/)
+
 ```sh
 $ npm install blob-to-base64
 # OR
