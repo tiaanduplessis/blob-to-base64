@@ -5,18 +5,19 @@
 }(this, (function () { 'use strict';
 
 /* globals Blob */
+'use strict';
 var toString = Object.prototype.toString;
 
-var index = function (x) {
+var isBlob = function (x) {
 	return x instanceof Blob || toString.call(x) === '[object Blob]';
 };
 
 function blobToBase64 (blob, cb) {
-  if (!window.fileReader) {
+  if (!window.FileReader) {
     cb(new Error('no fileReader object available'));
   }
 
-  if (!index(blob)) {
+  if (!isBlob(blob)) {
     cb(new Error('provided argument is not blob'));
   }
 

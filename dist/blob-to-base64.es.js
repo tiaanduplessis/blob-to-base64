@@ -1,7 +1,7 @@
 import isBlob from 'is-blob';
 
 function blobToBase64 (blob, cb) {
-  if (!window.fileReader) {
+  if (!window.FileReader) {
     cb(new Error('no fileReader object available'));
   }
 
