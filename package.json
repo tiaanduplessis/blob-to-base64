@@ -1,6 +1,6 @@
 {
   "name": "blob-to-base64",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert Blob to base64",
   "license": "MIT",
   "repository": {
@@ -12,7 +12,9 @@
   "main": "dist/blob-to-base64.js",
   "browser": "dist/blob-to-base64.js",
   "jsnext:main": "dist/blob-to-base64.es.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "jest",
     "lint": "prettier-standard 'src/**/*.js'",
@@ -25,7 +27,11 @@
   },
   "author": "tiaanduplessis <tiaanduplessis@hotmail.com>",
   "babel": {
-    "presets": [["env"]]
+    "presets": [
+      [
+        "env"
+      ]
+    ]
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
