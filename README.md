@@ -27,22 +27,6 @@
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="make a pull request" />
   </a>
 </div>
-<br>
-<div align="center">
-  <a href="https://github.com/tiaanduplessis/blob-to-base64/watchers">
-    <img src="https://img.shields.io/github/watchers/tiaanduplessis/blob-to-base64.svg?style=social" alt="Github Watch Badge" />
-  </a>
-  <a href="https://github.com/tiaanduplessis/blob-to-base64/stargazers">
-    <img src="https://img.shields.io/github/stars/tiaanduplessis/blob-to-base64.svg?style=social" alt="Github Star Badge" />
-  </a>
-  <a href="https://twitter.com/intent/tweet?text=Check%20out%20blob-to-base64!%20https://github.com/tiaanduplessis/blob-to-base64%20%F0%9F%91%8D">
-    <img src="https://img.shields.io/twitter/url/https/github.com/tiaanduplessis/blob-to-base64.svg?style=social" alt="Tweet" />
-  </a>
-</div>
-<br>
-<div align="center">
-  Built with ❤︎ by <a href="https://github.com/tiaanduplessis">tiaanduplessis</a> and <a href="https://github.com/tiaanduplessis/blob-to-base64/contributors">contributors</a>
-</div>
 
 <h2>Table of Contents</h2>
 <details>
