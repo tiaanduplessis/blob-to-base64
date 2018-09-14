@@ -10,11 +10,12 @@ function blobToBase64 (blob, cb) {
   }
 
   var reader = new window.FileReader();
-  reader.readAsDataURL(blob);
-
+  
   reader.onloadend = function () {
     cb(null, reader.result);
   };
+  
+  reader.readAsDataURL(blob);
 }
 
 export default blobToBase64;
