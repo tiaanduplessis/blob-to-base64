@@ -41,6 +41,6 @@
     "prettier-standard": "^8.0.1"
   },
   "dependencies": {
-    "is-blob": "^1.0.0"
+    "is-blob": "^2.0.0"
   }
 }
