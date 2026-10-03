@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>blob-to-base64 browser regressions</title>
+<pre id="results">running</pre>
+<script src="../dist/blob-to-base64.umd.js"></script>
+<script>
+;(async function () {
+  var results = []
+  function check (condition, message) {
+    if (!condition) throw new Error(message)
+    results.push(message)
+  }
+  var NativeReader = window.FileReader
+  try {
+    check(typeof window.blobToBase64 === 'function', 'standalone UMD export')
+    for (var entry of [
+      [new Blob(['hello'], { type: 'text/plain' }), 'data:text/plain;base64,aGVsbG8='],
+      [new Blob([]), 'data:application/octet-stream;base64,'],
+      [new Blob([new Uint8Array([0, 255, 128, 1])]), 'data:application/octet-stream;base64,AP+AAQ=='],
+      [new File(['file'], 'file.txt', { type: 'text/plain' }), 'data:text/plain;base64,ZmlsZQ==']
+    ]) {
+      var calls = 0
+      var value = await new Promise(function (resolve, reject) {
+        blobToBase64(entry[0], function (error, result) {
+          calls++
+          if (error) reject(error)
+          else resolve(result)
+        })
+      })
+      await new Promise(function (resolve) { setTimeout(resolve, 0) })
+      check(value === entry[1] && calls === 1, 'native conversion ' + entry[1])
+    }
+    var invalidCalls = 0
+    blobToBase64(null, function (error) {
+      invalidCalls++
+      check(error.message === 'provided argument is not blob', 'invalid input error')
+    })
+    check(invalidCalls === 1, 'invalid input callback once')
+    var reader
+    window.FileReader = function () { reader = new NativeReader(); return reader }
+    var abortCalls = 0
+    var abortError
+    blobToBase64(new Blob(['abort']), function (error) { abortCalls++; abortError = error })
+    reader.abort()
+    await new Promise(function (resolve) { setTimeout(resolve, 20) })
+    check(abortCalls === 1 && abortError.message === 'blob reading aborted', 'native abort callback once')
+    window.FileReader = undefined
+    var missingCalls = 0
+    blobToBase64(new Blob([]), function (error) {
+      missingCalls++
+      check(error.message === 'no fileReader object available', 'missing FileReader error')
+    })
+    check(missingCalls === 1, 'missing FileReader callback once')
+    document.querySelector('#results').textContent = JSON.stringify({ passed: results.length, results: results })
+  } catch (error) {
+    document.querySelector('#results').textContent = JSON.stringify({ failed: error.message, results: results })
+  } finally {
+    window.FileReader = NativeReader
+  }
+})()
+</script>
+</html>

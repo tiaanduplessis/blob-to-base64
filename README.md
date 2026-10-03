@@ -66,6 +66,27 @@ button.addEventListener('click', function (event) {
 })
 ```
 
+The callback receives an error if the input is not a Blob, FileReader is unavailable, or reading fails or is aborted. It is called once per conversion. On success, the result is the complete data URL, including its media type and `base64` prefix.
+
+The CommonJS entry exports the function directly. ES module consumers can use a default import:
+
+```js
+import blobToBase64 from 'blob-to-base64'
+```
+
+For a browser script tag, use `dist/blob-to-base64.umd.js`, which exposes `window.blobToBase64` and includes its Blob detection dependency. The CommonJS `dist/blob-to-base64.js` entry is intended for `require` or a bundler.
+
+## Development
+
+The development tools require Node.js 22.22.2 or 24.15.0 (or a newer supported LTS release). This does not change the browser runtime API or introduce a Node.js engine requirement for package consumers. Generated browser code retains ES5 syntax.
+
+```sh
+npm ci --ignore-scripts
+npm run check
+```
+
+`check` runs lint, rebuilds every distribution format, tests actual Blob/FileReader behavior, and installs an `npm pack` tarball into an isolated consumer to check its CommonJS, ES module, UMD, and AMD exports. Installation lifecycle scripts are not required.
+
 ## Contributing
 
 Contributions are welcome!
