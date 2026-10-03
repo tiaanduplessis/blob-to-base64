@@ -17,30 +17,27 @@
     "dist"
   ],
   "scripts": {
-    "test": "jest",
-    "lint": "prettier-standard --fix 'src/**/*.js'",
-    "build": "microbundle --name blobToBase64",
-    "start": "npm run test",
-    "precommit": "npm test",
+    "test": "node --test test/*.test.mjs",
+    "lint": "eslint src test scripts eslint.config.mjs",
+    "build": "node scripts/build.mjs",
+    "start": "npm test",
     "prepublish": "npm run build",
-    "pretest": "npm run lint"
+    "check": "npm run lint && npm run build && npm test && npm run test:package",
+    "test:package": "node scripts/test-package.mjs"
   },
   "author": "tiaanduplessis <tiaanduplessis@hotmail.com>",
-  "babel": {
-    "presets": [
-      [
-        "env"
-      ]
-    ]
-  },
   "devDependencies": {
-    "babel-preset-env": "^1.7.0",
-    "husky": "^1.3.1",
-    "jest": "^24.1.0",
-    "microbundle": "^0.10.1",
-    "prettier-standard": "^9.1.1"
+    "@babel/core": "8.0.6",
+    "@babel/preset-env": "8.0.6",
+    "@eslint/js": "10.0.1",
+    "@rollup/plugin-commonjs": "29.0.3",
+    "@rollup/plugin-node-resolve": "16.0.3",
+    "eslint": "10.12.0",
+    "jsdom": "30.1.1",
+    "rollup": "4.64.0",
+    "terser": "5.51.2"
   },
   "dependencies": {
-    "is-blob": "^2.0.1"
+    "is-blob": "^2.1.0"
   }
 }
